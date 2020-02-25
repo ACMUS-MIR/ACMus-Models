@@ -6,7 +6,8 @@ Created on 25.02.2020
 
 import argparse
 
-from predict_file import inference
+from predict_files import inference
+from write_result_file import write_result_csv
 
 
 parser = argparse.ArgumentParser()
@@ -34,5 +35,6 @@ norm_file = "models/ensemble.npz"
 
 
 if __name__ == '__main__':
-    inference(args.input, model_file, norm_file, class_dict, extract_params)
+    results = inference(args.input, model_file, norm_file, class_dict, extract_params)
+    write_result_csv(output_file, results)
     print("Finished")

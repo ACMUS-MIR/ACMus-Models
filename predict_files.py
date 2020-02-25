@@ -12,10 +12,15 @@ import os
 
 
 def inference(input, model_file, norm_file, class_dict, extract_params):
+    results = []
+
     if os.path.isfile(input):
-        predict_file(input, model_file, norm_file, class_dict, extract_params)
+        res = predict_file(input, model_file, norm_file, class_dict, extract_params)
+        results.append(res)
     else:
-        predict_folder(input, model_file, norm_file, class_dict, extract_params)
+        results = predict_folder(input, model_file, norm_file, class_dict, extract_params)
+
+    return results
 
 
 def predict_file(input_file, model_file, norm_file, class_dict, extract_params):
@@ -32,7 +37,7 @@ def predict_file(input_file, model_file, norm_file, class_dict, extract_params):
     pred = np.argmax(result_per_file)
     print(os.path.basename(input_file), "is", class_dict[pred], "with", result_per_file[pred], "confidence")
 
-    return pred, result_per_file[pred]
+    return [input_file, class_dict[pred], result_per_file[pred]]
 
 
 def predict_folder(input_file, model_file, norm_file, class_dict, extract_params):
@@ -43,5 +48,10 @@ def predict_folder(input_file, model_file, norm_file, class_dict, extract_params
 
     print("Found", len(fileList), "files")
 
+    results = []
+
     for file in fileList:
-        pred, conf = predict_file(file, model_file, norm_file, class_dict, extract_params)
+        res = predict_file(file, model_file, norm_file, class_dict, extract_params)
+        results.append(res)
+
+    return results

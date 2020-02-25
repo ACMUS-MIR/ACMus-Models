@@ -1,0 +1,16 @@
+.DS_Store
+*~
+*.pyc
+.project
+.pydevproject
+__pycache__/
+.settings
+.metadata
+.idea
+.~lock*
+.nfs*
+nohup.out
+.spyderworkspace
+.spyderproject
+.spyproject/
+.vscode/
