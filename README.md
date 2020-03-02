@@ -11,19 +11,38 @@ For speech music classification best CNN model was taken from - refer to baselin
 
 ## How to use
 
-### Clone repository
+### Clone this repository
 
-Models and commandline scripts are included for ensemble size classification and speech/music detection 
+Models and commandline scripts are included for ensemble size classification and speech/music detection
+as well as example files. Further data can be found at [Zenodo ACMUS-MIR](https://zenodo.org/record/3268961#.XlPH5iiyhaQ) 
 
 ### Install required packages
 
-Install reuqired packages with pip or conda using the provided requirement files.
+Install reuqired packages with pip or conda using the provided requirement.txt file for python 3.6.
+Create new environment and install dependencies using conda:
+```
+# Create new env
+$ conda create -n acmus_models python=3.6
+# Activate it
+$ conda activate acmus_models
+# Install from our fancy new file
+(acmus_models)$ pip install --user --requirement requirements.txt
+```
+
+Install using pip only:
+```
+$ pip install -r requirements.txt
+```
 
 ### Run *_inference_main.py
 
 Either "ensemble_size_inference_main.py" or "speech_music_inference_main.py" for each task. Arguments are "-i" for
 input file or folder with files. These folders should contain only audio files! The prediction results are
 written to a csv file. The output file name can be set using "-o".
+
+```
+$ python ensemble_size_inference_main.py -i example_files/ -o output.csv
+```
 
 ## License
 
