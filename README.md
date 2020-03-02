@@ -19,7 +19,8 @@ as well as example files. Further data can be found at [Zenodo ACMUS-MIR](https:
 ### Install required packages
 
 Install reuqired packages with pip or conda using the provided requirement.txt file for python 3.6.
-Create new environment and install dependencies using conda:
+
+Option A: Create new environment and install dependencies using conda:
 ```
 # Create new env
 $ conda create -n acmus_models python=3.6
@@ -29,9 +30,15 @@ $ conda activate acmus_models
 (acmus_models)$ pip install --user --requirement requirements.txt
 ```
 
-Install using pip only:
+Option B: Install using pip only:
 ```
 $ pip install -r requirements.txt
+```
+
+Option C: Install main packages manually:
+```
+$ pip install tensorflow==1.12
+$ pip install librosa==0.7.2
 ```
 
 ### Run *_inference_main.py
