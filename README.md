@@ -25,7 +25,7 @@ Create new environment and install dependencies using conda:
 $ conda create -n acmus_models python=3.6
 # Activate it
 $ conda activate acmus_models
-# Install from our fancy new file
+# Install from requirements file
 (acmus_models)$ pip install --user --requirement requirements.txt
 ```
 
