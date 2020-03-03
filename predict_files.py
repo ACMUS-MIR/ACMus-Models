@@ -9,6 +9,7 @@ from extract_features import extractSTFT, normalizeFeatures
 from tensorflow.keras import models
 import numpy as np
 import os
+import sys
 
 
 def inference(input, model_file, norm_file, class_dict, extract_params):
@@ -25,6 +26,7 @@ def inference(input, model_file, norm_file, class_dict, extract_params):
 
 def predict_file(input_file, model_file, norm_file, class_dict, extract_params):
     res = extractSTFT(input_file, 0, **extract_params)
+
     features = res[0]
 
     normalizeFeatures(features, norm_file)
@@ -51,7 +53,13 @@ def predict_folder(input_file, model_file, norm_file, class_dict, extract_params
     results = []
 
     for file in fileList:
-        res = predict_file(file, model_file, norm_file, class_dict, extract_params)
+        try:
+            res = predict_file(file, model_file, norm_file, class_dict, extract_params)
+        except:
+            e = sys.exc_info()[0]
+            print("Error on file", file, e)
+            continue
+
         results.append(res)
 
     return results
