@@ -81,8 +81,13 @@ def extract_2D_patches_from_features(features, blocksize, hopsize):
     return patch_tensor
 
 
-def normalizeFeatures(features, normFile):
-    full_feature_set = np.load(normFile)
+def normalizeFeatures(features, norm_file):
+    """ Normalize features to zero mean and standard deviation of 1 with normalization matrix (inplace).
+    Args:
+        features (np array): features to normalize
+        norm_file (string): file with normalization values for features
+    """
+    full_feature_set = np.load(norm_file)
     normMat = full_feature_set['normMat']
     features -= normMat[0]
     features /= normMat[1]
