@@ -24,14 +24,13 @@ def inference(input, model_file, norm_file, class_dict, extract_params):
     return results
 
 
-def predict_file(input_file, model_file, norm_file, class_dict, extract_params):
+def predict_file(input_file, model, norm_file, class_dict, extract_params):
     res = extractSTFT(input_file, 0, **extract_params)
 
     features = res[0]
 
     normalizeFeatures(features, norm_file)
 
-    model = models.load_model(model_file)
     results = model.predict(features)
 
     result_per_file = np.mean(results, axis=0)
@@ -52,9 +51,11 @@ def predict_folder(input_file, model_file, norm_file, class_dict, extract_params
 
     results = []
 
+    model = models.load_model(model_file)
+
     for file in fileList:
         try:
-            res = predict_file(file, model_file, norm_file, class_dict, extract_params)
+            res = predict_file(file, model, norm_file, class_dict, extract_params)
         except:
             e = sys.exc_info()[0]
             print("Error on file", file, e)
