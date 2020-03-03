@@ -49,7 +49,7 @@ def extractSTFT(file, classID, **extractParams):
         X = np.dot(X, mel_basis)
 
     if logSpec is True:
-        X = librosa.amplitude_to_db(X, ref=np.max)
+        X = np.log(1 + X)
 
     patches = extract_2D_patches_from_features(X, patchsize, patchhop)
     classes = np.ones(patches.shape[0]) * classID

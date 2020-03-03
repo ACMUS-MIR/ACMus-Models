@@ -1,3 +1,5 @@
 file;prediction;confidence
-example_files/0020_ninst04.wav;quartett;0.9558928
-example_files/0029_ninst02.wav;duo;0.8895375
+example_files/00018_CH.wav;duo;0.45329624
+example_files/0020_ninst04.wav;quartett;0.99991006
+example_files/0029_ninst02.wav;duo;0.9991383
+example_files/01245_SP.wav;duo;0.53532743
