@@ -37,7 +37,7 @@ $ pip install -r requirements.txt
 
 Option C: Install main packages manually:
 ```
-$ pip install tensorflow==1.12
+$ pip install tensorflow==1.15.2
 $ pip install librosa==0.7.2
 ```
 
