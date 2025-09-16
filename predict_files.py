@@ -1,15 +1,16 @@
 """
-Created on 25.02.2020 
+Created on 25.02.2020
 
 @author: goh
 """
 
 from extract_features import extractSTFT, normalizeFeatures
 
-from tensorflow.keras import models
+#from tensorflow.keras import models
 import numpy as np
 import os
 import sys
+import tensorflow as tf
 
 
 def inference(input, model_file, norm_file, class_dict, extract_params):
@@ -25,7 +26,8 @@ def inference(input, model_file, norm_file, class_dict, extract_params):
     """
     results = []
 
-    model = models.load_model(model_file)
+    #model = models.load_model(model_file)
+    model = tf.keras.models.load_model(model_file)
 
     if os.path.isfile(input):
         res = predict_file(input, model, norm_file, class_dict, extract_params)
